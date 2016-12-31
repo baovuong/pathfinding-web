@@ -44,7 +44,7 @@ public class World {
 
         // NOTE complexity: O(n^2)
         for (int x = 1; x <= maxX; x++) {
-            for (int y = 1; y < maxY; y++) {
+            for (int y = 1; y <= maxY; y++) {
                 Point p = new Point(x, y);
                 if (!obstacles.contains(p)) {
                     Vertex<Point> v = graph.addVertex(p);
