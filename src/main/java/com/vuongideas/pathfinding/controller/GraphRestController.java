@@ -19,7 +19,6 @@ import com.vuongideas.pathfinding.algorithm.Heuristic;
 import com.vuongideas.pathfinding.algorithm.SearchAlgorithm;
 import com.vuongideas.pathfinding.graph.Graph;
 import com.vuongideas.pathfinding.graph.Vertex;
-import com.vuongideas.pathfinding.model.PathPoint;
 import com.vuongideas.pathfinding.model.PathProblem;
 import com.vuongideas.pathfinding.model.PathSolution;
 import com.vuongideas.pathfinding.model.World;
