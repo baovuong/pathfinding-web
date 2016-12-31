@@ -5,13 +5,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController  
-@RequestMapping("/graph")  
+@RestController
+@RequestMapping("/graph")
 public class GraphRestController {
-	
-	@RequestMapping(value = "/{name}", method = RequestMethod.GET)
-	public String test(@PathVariable String name) {
-		String result = "Hello " + name;
-		return result;
-	}
+
+    @RequestMapping(value = "/{name}", method = RequestMethod.GET)
+    public String test(@PathVariable String name) {
+        String result = "Hello " + name;
+        return result;
+    }
 }

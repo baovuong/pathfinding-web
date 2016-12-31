@@ -6,12 +6,12 @@ import com.vuongideas.pathfinding.algorithm.SearchAlgorithm;
 
 public abstract class SolvableFiniteGraph<T> extends FiniteGraph<T> {
 
-	public SolvableFiniteGraph(int size) {
-		super(size);
-	}
-	
-	public List<Vertex<T>> solve(SearchAlgorithm<T> algorithm) {
-		return algorithm.search(this);
-	}
+    public SolvableFiniteGraph(int size) {
+        super(size);
+    }
+
+    public List<Vertex<T>> solve(SearchAlgorithm<T> algorithm) {
+        return algorithm.search(this);
+    }
 
 }
