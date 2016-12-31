@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +25,7 @@ import com.vuongideas.pathfinding.model.PathSolution;
 import com.vuongideas.pathfinding.model.World;
 
 @RestController
-@RequestMapping("/graph")
+@RequestMapping("/api")
 public class GraphRestController {
     
     private static final Map<String, SearchAlgorithm<Point>> algorithms;
@@ -45,10 +46,9 @@ public class GraphRestController {
         }));
     }
     
-    @RequestMapping(value = "/hello/{name}", method = RequestMethod.GET)
-    public String test(@PathVariable String name) {
-        String result = "Hello " + name;
-        return result;
+    @RequestMapping(value = "/algorithms", method = RequestMethod.GET, produces = "application/json")
+    public Set<String> getAlgorithms() {
+    	return algorithms.keySet();
     }
     
     @RequestMapping(value = "/solve/{algorithm}", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
