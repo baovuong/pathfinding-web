@@ -9,9 +9,9 @@ public class ConcurrentAdjacencyListFiniteGraph<T> extends AdjacencyListFiniteGr
     public ConcurrentAdjacencyListFiniteGraph(int size) {
         super(size);
         vertices = new CopyOnWriteArrayList<Vertex<T>>();
-        edges = new ArrayList<List<Integer>>(size);
+        edges = new CopyOnWriteArrayList<List<Integer>>();
         for (int i = 0; i < size; i++) {
-            edges.add(new LinkedList<Integer>());
+            edges.add(new CopyOnWriteArrayList<Integer>());
         }
     }
 
