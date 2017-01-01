@@ -7,8 +7,8 @@ import java.util.List;
 public class AdjacencyListFiniteGraph<T> extends SolvableFiniteGraph<T> {
     private int startIndex;
     private int goalIndex;
-    private List<Vertex<T>> vertices;
-    private List<List<Integer>> edges;
+    protected List<Vertex<T>> vertices;
+    protected List<List<Integer>> edges;
 
     public AdjacencyListFiniteGraph(int size) {
         super(size);

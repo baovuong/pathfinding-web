@@ -34,7 +34,7 @@ public class GraphRestController {
         algorithms = new HashMap<String, SearchAlgorithm<Point>>();
         algorithms.put("breadthfirst", new BreadthFirstSearchAlgorithm<Point>());
         algorithms.put("depthfirst", new DepthFirstSearchAlgorithm<Point>());
-        algorithms.put("greedy", new GreedySearchAlgorithm<Point>(new Heuristic<Point>() {
+        algorithms.put("greedybestfirst", new GreedySearchAlgorithm<Point>(new Heuristic<Point>() {
 
             @Override
             public double perform(Graph<Point> graph, Vertex<Point> current) {

@@ -7,8 +7,13 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import com.vuongideas.pathfinding.graph.AdjacencyListFiniteGraph;
+import com.vuongideas.pathfinding.graph.ConcurrentAdjacencyListFiniteGraph;
 import com.vuongideas.pathfinding.graph.FiniteGraph;
 import com.vuongideas.pathfinding.graph.Graph;
 import com.vuongideas.pathfinding.graph.Vertex;
@@ -35,15 +40,29 @@ public class World {
         this.beginning = beginning;
         this.destination = destination;
     }
-
-    public Graph<Point> constructGraph() {
-        FiniteGraph<Point> graph = new AdjacencyListFiniteGraph<Point>((maxX) * (maxY) - obstacles.size());
-
-        // creating vertices
-        Map<Point, Vertex<Point>> vertices = new HashMap<Point, Vertex<Point>>();
-
-        // NOTE complexity: O(n^2)
-        for (int x = 1; x <= maxX; x++) {
+    
+    private class WorkerThread implements Runnable {
+        private Graph<Point> graph;
+        private int x;
+        private int maxX;
+        private List<Point> obstacles;
+        private Point beginning;
+        private Point destination;
+        private Map<Point, Vertex<Point>> vertices;
+        
+        public WorkerThread(Graph<Point> graph, int x, int maxX, List<Point> obstacles, Point beginning, Point destination, Map<Point, Vertex<Point>> vertices) {
+            this.graph = graph;
+            this.x = x;
+            this.maxX = maxX;
+            this.obstacles = obstacles;
+            this.beginning = beginning;
+            this.destination = destination;
+            this.vertices = vertices;
+        }
+        
+        @Override
+        public void run() {
+            // TODO Auto-generated method stub
             for (int y = 1; y <= maxY; y++) {
                 Point p = new Point(x, y);
                 if (!obstacles.contains(p)) {
@@ -55,7 +74,40 @@ public class World {
                     }
                     vertices.put(p, v);
                 }
-            }
+            }            
+        }
+        
+    }
+
+    public Graph<Point> constructGraph() {
+        FiniteGraph<Point> graph = new ConcurrentAdjacencyListFiniteGraph<Point>((maxX) * (maxY) - obstacles.size());
+
+        // creating vertices
+        Map<Point, Vertex<Point>> vertices = new ConcurrentHashMap<Point, Vertex<Point>>();
+
+        // NOTE complexity: O(n^2)
+        ExecutorService executor = Executors.newCachedThreadPool();
+        List<Callable<Object>> todo = new ArrayList<Callable<Object>>(maxX);
+        for (int x = 1; x <= maxX; x++) {
+            todo.add(Executors.callable(new WorkerThread(graph, x, x, obstacles, beginning, destination, vertices)));
+//            for (int y = 1; y <= maxY; y++) {
+//                Point p = new Point(x, y);
+//                if (!obstacles.contains(p)) {
+//                    Vertex<Point> v = graph.addVertex(p);
+//                    if (p.equals(beginning)) {
+//                        graph.setStart(v);
+//                    } else if (p.equals(destination)) {
+//                        graph.setGoal(v);
+//                    }
+//                    vertices.put(p, v);
+//                }
+//            }
+        }
+        try {
+            executor.invokeAll(todo);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
 
         // creating edges
