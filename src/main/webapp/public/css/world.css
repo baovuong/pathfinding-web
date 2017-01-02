@@ -1,11 +1,16 @@
 table.world {
 	width: 90%;
+	border-collapse: collapse;
 }
 
 table.world tr td {
+	/*
 	width: 33.33%;
 	position: relative;
+	*/
 	border: 1px solid black;
+	margin: 0;
+	padding: 0;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
@@ -33,4 +38,20 @@ table.world tr td .content {
 	left: 0;
 	right: 0;
 	background: gold;
+}
+
+table.world tr td.obstacle {
+	
+}
+
+table.world tr td.start {
+	
+}
+
+table.world tr td.goal {
+	
+}
+
+table.world tr td.path {
+	
 }
