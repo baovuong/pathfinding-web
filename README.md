@@ -84,6 +84,7 @@ a REST Web Service written in Spring/Java
             "x": 5,
             "y": 5
         }
+    ]
   }
   ```
 
