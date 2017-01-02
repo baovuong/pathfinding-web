@@ -58,12 +58,34 @@ a REST Web Service written in Spring/Java
 
 * **Data Params**
 
+  JSON Object:
   * width=[integer]
   * height=[integer]
   * start=[object/coordinate]
   * goal=[object/coordinate]
-  * obstacles=[array:object/coordinate]
-    
+  * obstacles=[array:object/coordinate] (optional)
+  
+  Example:
+  
+  ```json
+  {
+    "width": 10,
+    "height": 10,
+    "start": {
+        "x": 1,
+        "y": 1,
+    },
+    "goal": {
+        "x": 10,
+        "y": 10,
+    },
+    "obstacles": [
+        {
+            "x": 5,
+            "y": 5
+        }
+  }
+  ```
 
 * **Success Response:**
 
