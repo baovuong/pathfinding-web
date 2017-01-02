@@ -49,4 +49,38 @@ a REST Web Service written in Spring/Java
 
 * **Notes:**
 
-  <_This is where all uncertainties, commentary, discussion etc. can go. I recommend timestamping and identifying oneself when leaving comments here._>
+### Solve Pathfinding Problem
+----
+  
+
+* **URL**
+
+  /api/solve/:algorithm
+
+* **Method:**
+
+  `POST`
+  
+*  **URL Params**
+
+* **Data Params**
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** 
+
+    in json:
+    
+    ```json
+    ```
+ 
+* **Sample Call:**
+
+  ```javascript
+  ```
+  
+  ```sh
+  ```
+
+* **Notes:**
