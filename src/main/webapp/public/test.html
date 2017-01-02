@@ -1,29 +1,14 @@
 <html>
 	<head>
 		<title>Test Client</title>
+		<link rel="stylesheet" type="text/css" href="css/world.css">
 	</head>
 	<body>
-		<table id="grid"></table>
+		<div id="main"></div>
+		<script src="js/world.js"></script>
 		<script>
-		function setupGrid(grid, width, height) {
-			// clear grid
-			while (grid.firstChild) {
-				grid.removeChild(grid.firstChild);
-			}
-			
-			// add cells
-			for (var r=0; r<height; ++r) {
-				var row = document.createElement("tr");
-				for (var c=0; c<width; ++c) {
-					var column = document.createElement("td");
-					column.innerText='f';
-					row.appendChild(column);
-				}
-				grid.appendChild(row);
-			}
-		}
-		
-		setupGrid(document.getElementById('grid'), 10,10);
+		  var world = new World(10, 10);
+		  document.getElementById('main').appendChild(world.createElement());
 		</script>
 	</body>
 </html>
