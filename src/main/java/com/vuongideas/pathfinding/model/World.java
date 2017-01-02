@@ -89,7 +89,6 @@ public class World {
         
         @Override
         public void run() {
-            // TODO Auto-generated method stub
             // look for neighbors
             Point[] points = new Point[4];
             points[0] = new Point(vertex.getValue().x - 1, vertex.getValue().y);
@@ -118,23 +117,10 @@ public class World {
         List<Callable<Object>> todo = new ArrayList<Callable<Object>>(maxX);
         for (int x = 1; x <= maxX; x++) {
             todo.add(Executors.callable(new VertexWorkerThread(graph, x, obstacles, beginning, destination, vertices)));
-//            for (int y = 1; y <= maxY; y++) {
-//                Point p = new Point(x, y);
-//                if (!obstacles.contains(p)) {
-//                    Vertex<Point> v = graph.addVertex(p);
-//                    if (p.equals(beginning)) {
-//                        graph.setStart(v);
-//                    } else if (p.equals(destination)) {
-//                        graph.setGoal(v);
-//                    }
-//                    vertices.put(p, v);
-//                }
-//            }
         }
         try {
             executor.invokeAll(todo);
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -143,28 +129,12 @@ public class World {
         
         // NOTE complexity: O(n)
         for (Vertex<Point> v : vertices.values()) {
-
-//            // look for neighbors
-//            Point[] points = new Point[4];
-//            points[0] = new Point(v.getValue().x - 1, v.getValue().y);
-//            points[1] = new Point(v.getValue().x + 1, v.getValue().y);
-//            points[2] = new Point(v.getValue().x, v.getValue().y - 1);
-//            points[3] = new Point(v.getValue().x, v.getValue().y + 1);
-//
-//            // add the existing neighbors
-//            for (Point p : points) {
-//                if (vertices.containsKey(p)) {
-//                    graph.addEdge(v, vertices.get(p));
-//                }
-//            }
-            
             todo.add(Executors.callable(new EdgeWorkerThread(v, graph, vertices)));
         }
         
         try {
             executor.invokeAll(todo);
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }       
         
