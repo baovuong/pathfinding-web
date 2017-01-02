@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<title>Test Client</title>
+	</head>
+	<body>
+		<table id="grid"></table>
+		<script>
+		function setupGrid(grid, width, height) {
+			// clear grid
+			while (grid.firstChild) {
+				grid.removeChild(grid.firstChild);
+			}
+			
+			// add cells
+			for (var r=0; r<height; ++r) {
+				var row = document.createElement("tr");
+				for (var c=0; c<width; ++c) {
+					var column = document.createElement("td");
+					column.innerText='f';
+					row.appendChild(column);
+				}
+				grid.appendChild(row);
+			}
+		}
+		
+		setupGrid(document.getElementById('grid'), 10,10);
+		</script>
+	</body>
+</html>
