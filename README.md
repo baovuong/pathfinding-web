@@ -12,13 +12,9 @@ a REST Web Service written in Spring/Java
 ----
   returns an array of algorithm names available for use.
 
-* **URL**
+* **URL:** /api/algorithms
 
-  /api/algorithms
-
-* **Method:**
-
-  `GET`
+* **Method:** `GET`
   
 *  **URL Params**
 
@@ -52,18 +48,22 @@ a REST Web Service written in Spring/Java
 ### Solve Pathfinding Problem
 ----
   
+  finds the solution/path for the given problem, defined by the request body. 
 
-* **URL**
+* **URL:** /api/solve/:algorithm
 
-  /api/solve/:algorithm
-
-* **Method:**
-
-  `POST`
+* **Method:** `POST`
   
 *  **URL Params**
 
 * **Data Params**
+
+  * width=[integer]
+  * height=[integer]
+  * start=[object/coordinate]
+  * goal=[object/coordinate]
+  * obstacles=[array:object/coordinate]
+    
 
 * **Success Response:**
 
