@@ -16,6 +16,7 @@
         document.getElementById('findPath').onclick = function() {
             var select = document.getElementById('algorithms');
             var algorithm = select.options[select.selectedIndex].value;
+			clearPath();
             findPath(algorithm);
         }
     </script>

@@ -43,6 +43,15 @@ function getAlgorithms(select) {
     request.send();
 }
 
+function clearPath() {
+    var world = document.getElementById('world');
+    var pathSteps = world.getElementsByClassName('path');
+    for (var i=0; i<pathSteps.length; i++) {
+        pathSteps[i].className = '';
+    }
+}
+
+
 function findPath(algorithm) {
     var world = document.getElementById('world');
     var rows = world.getElementsByTagName('tr');
