@@ -11,8 +11,13 @@
 	</div>
 	<script src="js/world.js"></script>
 	<script>
-        initWorld(10, 10);
+        initWorld(50, 10);
         getAlgorithms(document.getElementById('algorithms'));
+        document.getElementById('findPath').onclick = function() {
+            var select = document.getElementById('algorithms');
+            var algorithm = select.options[select.selectedIndex].value;
+            findPath(algorithm);
+        }
     </script>
 </body>
 </html>

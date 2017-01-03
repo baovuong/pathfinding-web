@@ -49,6 +49,6 @@ table#world tr td.point {
 	background-color: #9B0000;
 }
 
-table.world tr td.path {
-	
+table#world tr td.path {
+	background-color: #89F9FF;
 }
