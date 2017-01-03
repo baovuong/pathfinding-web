@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.vuongideas.pathfinding.algorithm.BreadthFirstSearchAlgorithm;
 import com.vuongideas.pathfinding.algorithm.DepthFirstSearchAlgorithm;
-import com.vuongideas.pathfinding.algorithm.GreedySearchAlgorithm;
+import com.vuongideas.pathfinding.algorithm.GreedyBestFirstSearchAlgorithm;
 import com.vuongideas.pathfinding.algorithm.Heuristic;
+import com.vuongideas.pathfinding.algorithm.ManhattanDistanceHeuristic;
 import com.vuongideas.pathfinding.algorithm.SearchAlgorithm;
 import com.vuongideas.pathfinding.graph.Graph;
 import com.vuongideas.pathfinding.graph.Vertex;
@@ -34,7 +35,9 @@ public class GraphRestController {
         algorithms = new HashMap<String, SearchAlgorithm<Point>>();
         algorithms.put("breadthfirst", new BreadthFirstSearchAlgorithm<Point>());
         algorithms.put("depthfirst", new DepthFirstSearchAlgorithm<Point>());
-        algorithms.put("greedybestfirst", new GreedySearchAlgorithm<Point>(new Heuristic<Point>() {
+        algorithms.put("greedybestfirst", new GreedyBestFirstSearchAlgorithm<Point>(new ManhattanDistanceHeuristic()));
+        /*
+        algorithms.put("greedybestfirst", new GreedyBestFirstSearchAlgorithm<Point>(new Heuristic<Point>() {
 
             @Override
             public double perform(Graph<Point> graph, Vertex<Point> current) {
@@ -44,6 +47,7 @@ public class GraphRestController {
             }
             
         }));
+        */
     }
     
     @RequestMapping(value = "/algorithms", method = RequestMethod.GET, produces = "application/json")
