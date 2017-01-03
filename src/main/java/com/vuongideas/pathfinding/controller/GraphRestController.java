@@ -18,6 +18,7 @@ import com.vuongideas.pathfinding.algorithm.DepthFirstSearchAlgorithm;
 import com.vuongideas.pathfinding.algorithm.GreedyBestFirstSearchAlgorithm;
 import com.vuongideas.pathfinding.algorithm.Heuristic;
 import com.vuongideas.pathfinding.algorithm.ManhattanDistanceHeuristic;
+import com.vuongideas.pathfinding.algorithm.EuclideanDistanceHeuristic;
 import com.vuongideas.pathfinding.algorithm.SearchAlgorithm;
 import com.vuongideas.pathfinding.graph.Graph;
 import com.vuongideas.pathfinding.graph.Vertex;
@@ -35,7 +36,8 @@ public class GraphRestController {
         algorithms = new HashMap<String, SearchAlgorithm<Point>>();
         algorithms.put("breadthfirst", new BreadthFirstSearchAlgorithm<Point>());
         algorithms.put("depthfirst", new DepthFirstSearchAlgorithm<Point>());
-        algorithms.put("greedybestfirst", new GreedyBestFirstSearchAlgorithm<Point>(new ManhattanDistanceHeuristic()));
+        algorithms.put("manhattangreedybestfirst", new GreedyBestFirstSearchAlgorithm<Point>(new ManhattanDistanceHeuristic()));
+        algorithms.put("euclideangreedybestfirst", new GreedyBestFirstSearchAlgorithm<Point>(new EuclideanDistanceHeuristic()));
         /*
         algorithms.put("greedybestfirst", new GreedyBestFirstSearchAlgorithm<Point>(new Heuristic<Point>() {
 
