@@ -8,7 +8,7 @@ function initWorld(width, height) {
             // column.style.width = '1px'; //''+100/this.width+'%';
             column.innerHTML = '&nbsp;';
 
-            if ((r == 0 && c == 0) || (r == height - 1 && c == width - 1)) {
+            if ((r === 0 && c === 0) || (r == height - 1 && c == width - 1)) {
                 column.className = 'point';
             } else {
                 column.onclick = function(e) {
@@ -65,7 +65,7 @@ function findPath(algorithm) {
             // add it to obstacles
             var y = i / width + 1;
             var x = i % width;
-            x = x == 0 ? width : x;
+            x = x === 0 ? width : x;
             obstacles.push({
                 'y' : y,
                 'x' : x
@@ -83,7 +83,7 @@ function findPath(algorithm) {
             var path = result.path;
             for (var i=0; i<path.length; i++) {
                 var cellIndex = (path[i].y-1)*width + path[i].x - 1;
-                if (cells[cellIndex].className == '')
+                if (cells[cellIndex].className === '')
                     cells[cellIndex].className = 'path';
             }
         }
