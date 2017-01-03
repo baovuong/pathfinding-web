@@ -1,9 +1,10 @@
-table.world {
-	width: 90%;
+table#world {
+	width: 50%;
+	height: 50%;
 	border-collapse: collapse;
 }
 
-table.world tr td {
+table#world tr td {
 	/*
 	width: 33.33%;
 	position: relative;
@@ -19,7 +20,7 @@ table.world tr td {
 	user-select: none;
 }
 
-table.world tr td:after {
+table#world tr td:after {
 	content: '';
 	display: block;
 	margin-top: 100%;
@@ -31,7 +32,7 @@ table.world tr td:after {
 	user-select: none;
 }
 
-table.world tr td .content {
+table#world tr td .content {
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -40,16 +41,12 @@ table.world tr td .content {
 	background: gold;
 }
 
-table.world tr td.obstacle {
-	
+table#world tr td.obstacle {
+	background-color: #7C7C7C;
 }
 
-table.world tr td.start {
-	
-}
-
-table.world tr td.goal {
-	
+table#world tr td.point {
+	background-color: #9B0000;
 }
 
 table.world tr td.path {

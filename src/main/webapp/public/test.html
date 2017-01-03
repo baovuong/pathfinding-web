@@ -1,14 +1,18 @@
 <html>
-	<head>
-		<title>Test Client</title>
-		<link rel="stylesheet" type="text/css" href="css/world.css">
-	</head>
-	<body>
-		<div id="main"></div>
-		<script src="js/world.js"></script>
-		<script>
-		  var world = new World(10, 10);
-		  document.getElementById('main').appendChild(world.createElement());
-		</script>
-	</body>
+<head>
+<title>Test Client</title>
+<link rel="stylesheet" type="text/css" href="css/world.css">
+</head>
+<body>
+	<div id="main">
+		<select id="algorithms">
+		</select> <button id="findPath">Find Path</button>
+		<table id="world"></table>
+	</div>
+	<script src="js/world.js"></script>
+	<script>
+        initWorld(10, 10);
+        getAlgorithms(document.getElementById('algorithms'));
+    </script>
+</body>
 </html>
